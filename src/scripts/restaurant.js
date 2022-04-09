@@ -1,26 +1,29 @@
 import data from '../data/DATA.json';
+const dataRestaurant = data.restaurants;
 
-const loadRestaurant = (data) => {
+const loadRestaurant = (restaurants) => {
   const restaurantlist = document.querySelector('.restaurant__list');
   restaurantlist.innerHTML = '';
-  data.restaurants.forEach((d) => {
-    const restaurant = `
+  restaurants.slice(-6).forEach((resto) => {
+    const { pictureId, name, city, rating, description } = resto;
+
+    const item = `
     <div class="restaurant" tabindex="0">
-      <img loading=lazy src="${d.pictureId}" alt="${d.name} Image" class="restaurant__image" />
+      <img loading=lazy src="${pictureId}" alt="${name} Image" class="restaurant__image" />
       <div class="restaurant__content">
-        <p class="restaurant__name">${d.name}</p>
+        <p class="restaurant__name">${name}</p>
         <div class="restaurant__info">
         <p class="restaurant__location">
-          <img src="./src/icons/location.svg" alt="location" width="20px"/>${d.city}
+          <img src="./src/icons/location.svg" alt="location" width="20px"/>${city}
         </p>
-        <p class="restaurant__rating"><img src="./src/icons/star.svg" alt="rating"/>${d.rating}</p>
+        <p class="restaurant__rating"><img src="./src/icons/star.svg" alt="rating"/>${rating}</p>
         </div>
-        <p class="restaurant__description">${d.description}</p>
+        <p class="restaurant__description">${description}</p>
       </div>
     </div>
     `;
-    restaurantlist.innerHTML += restaurant;
+    restaurantlist.innerHTML += item;
   });
 };
 
-loadRestaurant(data);
+loadRestaurant(dataRestaurant);
