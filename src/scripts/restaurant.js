@@ -1,4 +1,4 @@
-import data from '../DATA.json';
+import data from '../data/DATA.json';
 
 const loadRestaurant = (data) => {
   const restaurantlist = document.querySelector('.restaurant__list');
